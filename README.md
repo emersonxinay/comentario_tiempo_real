@@ -126,3 +126,20 @@ migrar una vez creado
 ```bash
 rails db:migrate
 ```
+
+## enviar email con mailer
+
+```bash
+rails g mailer comments submitted
+```
+
+## para usar en tiempo real
+
+```erb
+# en posts/show.html.erb
+<%= turbo_stream_from @post  %>
+
+# models/comment.rb
+  broadcasts_to :post
+
+```

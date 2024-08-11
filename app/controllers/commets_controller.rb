@@ -1,7 +1,8 @@
 class CommetsController < ApplicationController
   before_action :set_post
   def create
-    @post.commets.create! params.required(:commet).permit(:content)
+    comment = @post.commets.create! params.required(:commet).permit(:content)
+    CommentsMailer.submitted(comment).deliver_later
     redirect_to @post
     
   end
