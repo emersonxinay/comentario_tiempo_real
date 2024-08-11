@@ -13,50 +13,116 @@ rails 7.2.0
 rails new nuevoproyecto
 ```
 
-## moviendome a la carpeta
+### moviendome a la carpeta
 
 ```bash
 cd nuevoproyecto
 ```
 
-## configurando el Gemfile para instalar rails 7.2.0
+### configurando el Gemfile para instalar rails 7.2.0
 
 ```ruby
 gem "rails", "~> 7.2.0.beta3"
 ```
 
-## instalando las gemas
+### instalando las gemas
 
 ```bash
 bundle install
 ```
 
-## creando la base de datos
+### creando la base de datos
 
 ```bash
 rails db:migrate
 ```
 
-## corriendo la aplicación
+### corriendo la aplicación
 
 ```bash
 rails server
 ```
 
-## creando un scaffold para un post
+### creando un scaffold para un post
 
 ```bash
 rails generate scaffold post title:string content:text
 ```
 
-## migrando el post
+### migrando el post
 
 ```bash
 rails db:migrate
 ```
 
-## corriendo la aplicación
+### corriendo la aplicación
 
 ```bash
 rails s
+```
+
+## Insertando un editor de texto en rails
+
+```bash
+rails action_text:install
+```
+
+migramos para que todo se instale correctamente
+
+```bash
+bundle install
+```
+
+### migramos nuevamente
+
+```bash
+rails db:migrate
+```
+
+### para conectar correctamente el editor de texto en post
+
+```ruby
+# app/models/post
+has_rich_text :content
+```
+
+## Para manejar el tiempo real local desde la terminal
+
+```bash
+./bin/importmap pin local-time
+```
+
+luego en importmap.rb
+
+```ruby
+# agregar
+pin "local-time" # @3.0.2
+"https://ga.jspm.io/npm:local-time@3.0.2/app/assets/javascripts/local-time.es2017-esm.js"
+# @3.0.2
+```
+
+y seguido en aplication.js para usar el tiempo
+
+```js
+// agregar
+import LocalTime from "local-time"
+LocalTime.start()
+```
+
+descargando time desde la terminal
+
+```bash
+./bin/importmap pin local-time --download
+```
+
+crear recursos para los comentarios
+
+```bash
+rails g resources comment post:references content:text
+```
+
+migrar una vez creado
+
+```bash
+rails db:migrate
 ```
