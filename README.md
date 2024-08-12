@@ -144,10 +144,28 @@ rails g mailer comments submitted
 
 ```
 
-# deploy
+# deploy a heroku
 
-cambiar a la base de datos de postgresql
+cambiar a la base de datos de postgresql y antes deberia tener commitiado con git todo el proyecto
 
 ```bash
 rails db:system:change --to=postgresql
+```
+
+creando la cuenta de heroku si no lo tienes
+
+```bash
+heroku login
+```
+
+creando el proyecto en heroku desde la terminal
+
+```bash
+heroku create
+```
+
+subir a heroku
+
+```bash
+heroku push main
 ```
