@@ -143,3 +143,11 @@ rails g mailer comments submitted
   broadcasts_to :post
 
 ```
+
+# deploy
+
+cambiar a la base de datos de postgresql
+
+```bash
+rails db:system:change --to=postgresql
+```
