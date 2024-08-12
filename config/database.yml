@@ -19,7 +19,6 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-
 development:
   <<: *default
   database: post2024_development
@@ -80,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: post2024_production
-  username: post2024
-  password: <%= ENV["POST2024_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
